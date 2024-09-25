@@ -4,14 +4,13 @@ import com.tech.task.product_service.dao.ProductRepository;
 import com.tech.task.product_service.model.request.CreateProductRequest;
 import com.tech.task.product_service.model.response.ProductResponse;
 import com.tech.task.product_service.service.ProductService;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -88,7 +87,7 @@ public class ProductApiControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.name").value("Iphone"));;
+                .andExpect(jsonPath("$.name").value("Iphone"));
     }
 
     @Test
@@ -116,7 +115,7 @@ public class ProductApiControllerTest {
 
         Long id = 0L;
 
-        mockMvc.perform(put("/products/{id}",  id)
+        mockMvc.perform(put("/products/{id}", id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
                 .andExpect(status().isBadRequest())
