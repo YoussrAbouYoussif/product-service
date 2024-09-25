@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -44,9 +44,9 @@ public class ProductServiceImpl implements ProductService{
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
 
-        if(request.getName() != null && !request.getName().isEmpty())
+        if (request.getName() != null && !request.getName().isEmpty())
             product.setName(request.getName());
-        if(request.getDescription() != null && !request.getDescription().isEmpty())
+        if (request.getDescription() != null && !request.getDescription().isEmpty())
             product.setDescription(request.getDescription());
 
         Product updatedProduct = productRepository.save(product);
