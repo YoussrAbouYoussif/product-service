@@ -4,6 +4,8 @@ import com.tech.task.product_service.dao.ProductRepository;
 import com.tech.task.product_service.model.request.CreateProductRequest;
 import com.tech.task.product_service.model.response.ProductResponse;
 import com.tech.task.product_service.service.ProductService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,6 +32,11 @@ public class ProductApiControllerTest {
 
     @BeforeEach
     public void setUp() {
+        productRepository.deleteAll();
+    }
+
+    @AfterEach
+    public void tearDown() {
         productRepository.deleteAll();
     }
 
