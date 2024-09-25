@@ -52,4 +52,13 @@ public class ProductServiceImpl implements ProductService{
         Product updatedProduct = productRepository.save(product);
         return mapper.productToProductResponse(updatedProduct);
     }
+
+    @Override
+    public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+            throw new ProductNotFoundException("Product not found with id: " + id);
+        }
+
+        productRepository.deleteById(id);
+    }
 }
