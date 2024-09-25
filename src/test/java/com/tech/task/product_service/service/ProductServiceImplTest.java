@@ -7,6 +7,7 @@ import com.tech.task.product_service.model.request.CreateProductRequest;
 import com.tech.task.product_service.model.request.UpdateProductRequest;
 import com.tech.task.product_service.model.response.ProductResponse;
 import jakarta.validation.ConstraintViolationException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class ProductServiceImplTest {
 
     @BeforeEach
     void setUp() {
+        productRepository.deleteAll();
+    }
+
+    @AfterEach
+    public void tearDown() {
         productRepository.deleteAll();
     }
 
